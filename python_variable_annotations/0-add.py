@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """This module provides a function that returns
 the sum of two float numbers."""
 
