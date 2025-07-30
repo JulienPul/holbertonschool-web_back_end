@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Async Generator coroutine 
+"""Async Generator coroutine
 called async_generator that takes no arguments."""
 import random
 import asyncio
