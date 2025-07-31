@@ -6,5 +6,5 @@ import asyncio
 
 
 async def asyn_comprehension() -> AsyncGenerator[float, None]:
-    random_n = await asyncio.gather(async_generator)
+    random_n = [v async for v in async_generator()]
     return random_n
