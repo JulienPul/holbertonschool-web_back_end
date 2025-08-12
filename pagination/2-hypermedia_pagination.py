@@ -2,6 +2,7 @@
 """index_range + get_page (1-simple_pagination.py)"""
 import csv
 from typing import Tuple, List
+import math
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -47,7 +48,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
-        total_pages = total_items / page_size
+        total_pages = math.ceil(total_items / page_size)
         return {
             "page_size": len(data),
             "page": page,
