@@ -1,2 +1,2 @@
 //insert document
-insert_one name = "Holberton school"
+db.school.InsertOne({"name: "Holberton school"})
