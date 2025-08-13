@@ -1,3 +1,2 @@
 //insert document
-use my_db
 db.school.insert({ name: "Holberton school" })
