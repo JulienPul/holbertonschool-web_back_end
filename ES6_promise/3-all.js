@@ -1,10 +1,11 @@
 // handle multiple successfull promises
-import  uploadPhoto  from "./utils"
-import createUser from "./utils"
+import { uploadPhoto } from "./utils";
+import { createUser } from "./utils";
 export default function handleProfileSignup() {
-  Promise.allSettled([
-    uploadPhoto(Promise.resolve()),
-    createUser(Promise.resolve(),)
-  ]).then(results => console.log(results));
-  return Promise
+  return Promise.all([uploadPhoto(), createUser()])
+  .then(([photo, user]) => {
+    console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+  })
+  .catch(() => {console.log('Signup system offline');
+  });
 }
