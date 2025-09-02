@@ -5,7 +5,7 @@ function countStudents(path) {
     const content = fs.readFileSync(path, 'utf8');
     const lines = content.split('\n').filter((line) => line.trim() !== '');
 
-    // enlever l'entête (première ligne)
+    // retirer l'entête
     lines.shift();
 
     const studentsByField = {};
@@ -20,17 +20,16 @@ function countStudents(path) {
         studentsByField[field] = [];
       }
       studentsByField[field].push(firstname);
-
       total++;
     }
 
     console.log(`Number of students: ${total}`);
-    for (const field in studentsByField) {
+    Object.keys(studentsByField).sort().forEach((field) => {
       const list = studentsByField[field];
       console.log(
         `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
       );
-    }
+    });
   } catch (err) {
     throw new Error('Cannot load the database');
   }
