@@ -22,13 +22,12 @@ function readStudents(path) {
         const parts = lines[i].split(',');
         const firstname = parts[0];
         const field = parts[3];
-        if (!firstname || !field) continue;
-
-        if (!byField[field]) byField[field] = [];
-        byField[field].push(firstname);
-        total += 1;
+        if (firstname && field) {
+          if (!byField[field]) byField[field] = [];
+          byField[field].push(firstname);
+          total += 1;
+        }
       }
-
       resolve({ total, byField });
     });
   });
@@ -72,8 +71,6 @@ const app = http.createServer((req, res) => {
       .catch(() => {
         res.end('Cannot load the database');
       });
-
-    return;
   }
 });
 

@@ -1,6 +1,6 @@
 // Reading a file asynchronously with Node JS
-const { error } = require('console');
-const fs =require('fs');
+const fs = require('fs');
+
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
@@ -14,15 +14,15 @@ function countStudents(path) {
 
       const studentsByField = {};
       let total = 0;
-      for(let i = 0; i < lines.length; i++) {
+      for (let i = 0; i < lines.length; i += 1) {
         const parts = lines[i].split(',');
         const firstname = parts[0];
         const field = parts[3];
         if (!studentsByField[field]) {
-            studentsByField[field] = [];   
+          studentsByField[field] = [];
         }
         studentsByField[field].push(firstname);
-        total++;
+        total += 1;
       }
       console.log(`Number of students: ${total}`);
       Object.keys(studentsByField).sort().forEach((field) => {
@@ -32,6 +32,5 @@ function countStudents(path) {
       resolve();
     });
   });
-
 }
 module.exports = countStudents;

@@ -1,3 +1,4 @@
+// Reading a file synchronously with Node JS
 const fs = require('fs');
 
 function countStudents(path) {
@@ -11,7 +12,7 @@ function countStudents(path) {
     const studentsByField = {};
     let total = 0;
 
-    for (let i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i += 1) {
       const parts = lines[i].split(',');
       const firstname = parts[0];
       const field = parts[3];
@@ -20,14 +21,14 @@ function countStudents(path) {
         studentsByField[field] = [];
       }
       studentsByField[field].push(firstname);
-      total++;
+      total += 1;
     }
 
     console.log(`Number of students: ${total}`);
     Object.keys(studentsByField).sort().forEach((field) => {
       const list = studentsByField[field];
       console.log(
-        `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
+        `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`,
       );
     });
   } catch (err) {
